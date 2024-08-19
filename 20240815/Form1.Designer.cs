@@ -39,8 +39,8 @@
             button2 = new Button();
             button1 = new Button();
             txtResultado = new TextBox();
-            tbAcerca = new TabPage();
             tabPage1 = new TabPage();
+            tbAcerca = new TabPage();
             tabControl1.SuspendLayout();
             tbCalculadora.SuspendLayout();
             SuspendLayout();
@@ -99,7 +99,7 @@
             button6.TabIndex = 6;
             button6.Text = "=";
             button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
+            button6.Click += operar;
             // 
             // button5
             // 
@@ -158,6 +158,15 @@
             txtResultado.Size = new Size(224, 23);
             txtResultado.TabIndex = 0;
             // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(345, 400);
+            tabPage1.TabIndex = 2;
+            tabPage1.Text = "Pila";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
             // tbAcerca
             // 
             tbAcerca.Location = new Point(4, 24);
@@ -167,15 +176,6 @@
             tbAcerca.TabIndex = 1;
             tbAcerca.Text = "Acerca de";
             tbAcerca.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(345, 400);
-            tabPage1.TabIndex = 2;
-            tabPage1.Text = "Pila";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

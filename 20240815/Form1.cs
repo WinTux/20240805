@@ -84,13 +84,95 @@ namespace _20240815
                  + -
               --------->
          */
-        private void operar() {
-            var res = "(45 + 12) * 7 - 3";
+        private void operar(object sender, EventArgs e) {
+            var expresion = txtResultado.Text;// a * (b + c) --> 5 * (3+2)
+            /*
+            
+            pila aux: 
+            salida: a b c + *
+             
+
+            pila: 
+            RES: 25
+
+            
+             */
 
             // INFIX: A + B
             // PREFIX: + A B
             // POSTFIX: A B +
-            
+
+            string exp_postfix = convertirApostfix(expresion);
+            lblMensaje.Text = exp_postfix;
+        }
+
+        private string convertirApostfix(string exp_infix)
+        {
+            string exp_postfix = "";
+            // Resolvemos el problema
+            Stack<char> pila_auxiliar = new Stack<char>();
+            for (int i = 0; i < exp_infix.Length; i++) {
+                char simbolo = exp_infix[i];
+                switch (simbolo) {
+                    case '(':
+                        pila_auxiliar.Push(simbolo);
+                        break;
+                    case ')':
+                        char elemento_de_pila;
+                        do {
+                            elemento_de_pila = pila_auxiliar.Pop();
+                            if (!elemento_de_pila.Equals('('))
+                                exp_postfix += elemento_de_pila;
+                        } while (!elemento_de_pila.Equals('(') && pila_auxiliar.Count > 0);
+                        break;
+                    case '+': case '-':
+                        if (pila_auxiliar.Count == 0)
+                        {
+                            pila_auxiliar.Push(simbolo);
+                        }
+                        else
+                        {
+                            elemento_de_pila = pila_auxiliar.Pop();
+                            bool hay_operador = "+-*/".Contains(elemento_de_pila);
+                            while (hay_operador)
+                            {
+                                exp_postfix += elemento_de_pila;
+                                elemento_de_pila = pila_auxiliar.Pop();
+                                hay_operador = "+-*/".Contains(elemento_de_pila);
+                            }
+                            if (elemento_de_pila.Equals('('))
+                            {
+                                //pila_auxiliar.Push('(');
+                                pila_auxiliar.Push(simbolo);
+                            }
+                                
+                        }
+                        break;
+                    case '*': case '/':
+                        if (pila_auxiliar.Count == 0) {
+                            pila_auxiliar.Push(simbolo);
+                        }
+                        else
+                        {
+                            elemento_de_pila = pila_auxiliar.Pop();
+                            bool hay_operador = "*/".Contains(elemento_de_pila);
+                            while (hay_operador) {
+                                exp_postfix += elemento_de_pila;
+                                elemento_de_pila = pila_auxiliar.Pop();
+                                hay_operador = "*/".Contains(elemento_de_pila);
+                            }
+                            if ("(+-".Contains(elemento_de_pila))
+                                pila_auxiliar.Push(simbolo);
+                        }
+                        break;
+                    default: // si es numero (operando)
+                        exp_postfix += simbolo;
+                        break;
+                }
+            }
+            while (pila_auxiliar.Count > 0)
+                exp_postfix += pila_auxiliar.Pop();
+            return exp_postfix;
         }
     }
 }

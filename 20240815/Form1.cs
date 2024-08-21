@@ -102,10 +102,53 @@ namespace _20240815
             // PREFIX: + A B
             // POSTFIX: A B +
 
-            string exp_postfix = convertirApostfix(expresion);
-            lblMensaje.Text = exp_postfix;
+            string exp_postfix = convertirApostfix(expresion);// 5*(6-3) -> 563-*
+            lblMensaje.Text = resolverPostfix(exp_postfix); // 5 6 3 
+
+            int r = resolverRecursivo(5);//factorial
+            lblMensaje.Text += "--> 5! = "+r;
         }
 
+        private string resolverPostfix(string exp_postfix)
+        {
+            Stack<int> pila = new Stack<int>();
+            // Solución al problema
+            for (int i = 0; i < exp_postfix.Length; i++) { 
+                char caracter = exp_postfix[i];
+                bool esNum = int.TryParse(caracter +"", out int numero);
+                if (esNum)
+                    pila.Push(numero);
+                else {
+                    int b = pila.Pop();
+                    int a = pila.Pop();
+                    switch (caracter)
+                    {
+                        case '+':
+                            pila.Push(a+b);
+                            break;
+                        case '-':
+                            pila.Push(a - b);
+                            break;
+                        case '*':
+                            pila.Push(a * b);
+                            break;
+                        case '/':
+                            pila.Push(a / b);
+                            break;
+                        default:
+                            lblMensaje.Text = "ERROR AL RESOLVER LA EXPRESIÓN POSTFIX";
+                            break;
+                    }
+                }  
+            }
+            return pila.Pop()+"";
+        }
+
+        private int resolverRecursivo(int n) {// factorial - 5! = 5*4*3*2*1 = 120 -> n! = n*(n-1)*(n-2)*...*1 
+            if (n == 1 || n == 0)
+                return 1;
+            return n * resolverRecursivo(n-1); // 5 * 4 * 3 * 2 * 1
+        }
         private string convertirApostfix(string exp_infix)
         {
             string exp_postfix = "";
@@ -135,10 +178,15 @@ namespace _20240815
                             elemento_de_pila = pila_auxiliar.Pop();
                             bool hay_operador = "+-*/".Contains(elemento_de_pila);
                             while (hay_operador)
-                            {
-                                exp_postfix += elemento_de_pila;
-                                elemento_de_pila = pila_auxiliar.Pop();
-                                hay_operador = "+-*/".Contains(elemento_de_pila);
+                            { // RPN (Reverse Polish Notation) ALG (algebraico)
+                                exp_postfix += elemento_de_pila; // 6/(4-1)*5-5 -> 641-/5*5-  (*)
+                                if (pila_auxiliar.Count > 0)
+                                {
+                                    elemento_de_pila = pila_auxiliar.Pop();
+                                    hay_operador = "+-*/".Contains(elemento_de_pila);
+                                }
+                                else
+                                    hay_operador = false;
                             }
                             if (elemento_de_pila.Equals('('))
                             {

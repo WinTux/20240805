@@ -40,9 +40,19 @@
             button1 = new Button();
             txtResultado = new TextBox();
             tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            button9 = new Button();
+            txtContenido = new TextBox();
+            lblOrigen = new Label();
+            button8 = new Button();
+            button7 = new Button();
+            lblContenidoArchivo = new Label();
             tbAcerca = new TabPage();
+            dialogoAbreArchivo = new OpenFileDialog();
+            button10 = new Button();
             tabControl1.SuspendLayout();
             tbCalculadora.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // btnSaludar
@@ -67,6 +77,7 @@
             // 
             tabControl1.Controls.Add(tbCalculadora);
             tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tbAcerca);
             tabControl1.Location = new Point(2, 93);
             tabControl1.Name = "tabControl1";
@@ -167,6 +178,77 @@
             tabPage1.Text = "Pila";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(button10);
+            tabPage2.Controls.Add(button9);
+            tabPage2.Controls.Add(txtContenido);
+            tabPage2.Controls.Add(lblOrigen);
+            tabPage2.Controls.Add(button8);
+            tabPage2.Controls.Add(button7);
+            tabPage2.Controls.Add(lblContenidoArchivo);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Size = new Size(345, 400);
+            tabPage2.TabIndex = 3;
+            tabPage2.Text = "Archivos";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(204, 280);
+            button9.Name = "button9";
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 5;
+            button9.Text = "Guardar";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
+            // txtContenido
+            // 
+            txtContenido.Location = new Point(32, 208);
+            txtContenido.Multiline = true;
+            txtContenido.Name = "txtContenido";
+            txtContenido.Size = new Size(247, 66);
+            txtContenido.TabIndex = 4;
+            // 
+            // lblOrigen
+            // 
+            lblOrigen.AutoSize = true;
+            lblOrigen.Location = new Point(27, 71);
+            lblOrigen.Name = "lblOrigen";
+            lblOrigen.Size = new Size(0, 15);
+            lblOrigen.TabIndex = 3;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(204, 90);
+            button8.Name = "button8";
+            button8.Size = new Size(75, 23);
+            button8.TabIndex = 2;
+            button8.Text = "Abrir...";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(120, 19);
+            button7.Name = "button7";
+            button7.Size = new Size(159, 23);
+            button7.TabIndex = 1;
+            button7.Text = "Abrir prueba.txt";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
+            // lblContenidoArchivo
+            // 
+            lblContenidoArchivo.AutoSize = true;
+            lblContenidoArchivo.Location = new Point(32, 149);
+            lblContenidoArchivo.Name = "lblContenidoArchivo";
+            lblContenidoArchivo.Size = new Size(38, 15);
+            lblContenidoArchivo.TabIndex = 0;
+            lblContenidoArchivo.Text = "Texto:";
+            // 
             // tbAcerca
             // 
             tbAcerca.Location = new Point(4, 24);
@@ -176,6 +258,20 @@
             tbAcerca.TabIndex = 1;
             tbAcerca.Text = "Acerca de";
             tbAcerca.UseVisualStyleBackColor = true;
+            // 
+            // dialogoAbreArchivo
+            // 
+            dialogoAbreArchivo.FileName = "openFileDialog1";
+            // 
+            // button10
+            // 
+            button10.Location = new Point(39, 312);
+            button10.Name = "button10";
+            button10.Size = new Size(240, 23);
+            button10.TabIndex = 6;
+            button10.Text = "Ejemplos de Path";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
             // 
             // Form1
             // 
@@ -190,6 +286,8 @@
             tabControl1.ResumeLayout(false);
             tbCalculadora.ResumeLayout(false);
             tbCalculadora.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -209,5 +307,14 @@
         private Button button1;
         private TextBox txtResultado;
         private TabPage tabPage1;
+        private TabPage tabPage2;
+        private Label lblContenidoArchivo;
+        private Button button7;
+        private Button button8;
+        private OpenFileDialog dialogoAbreArchivo;
+        private Label lblOrigen;
+        private TextBox txtContenido;
+        private Button button9;
+        private Button button10;
     }
 }

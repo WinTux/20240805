@@ -45,7 +45,7 @@ namespace _20240815
                 // Asignar operacion
                 operacion = "suma";
             }
-            
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -84,7 +84,8 @@ namespace _20240815
                  + -
               --------->
          */
-        private void operar(object sender, EventArgs e) {
+        private void operar(object sender, EventArgs e)
+        {
             var expresion = txtResultado.Text;// a * (b + c) --> 5 * (3+2)
             /*
             
@@ -106,25 +107,27 @@ namespace _20240815
             lblMensaje.Text = resolverPostfix(exp_postfix); // 5 6 3 
 
             int r = resolverRecursivo(5);//factorial
-            lblMensaje.Text += "--> 5! = "+r;
+            lblMensaje.Text += "--> 5! = " + r;
         }
 
         private string resolverPostfix(string exp_postfix)
         {
             Stack<int> pila = new Stack<int>();
             // Solución al problema
-            for (int i = 0; i < exp_postfix.Length; i++) { 
+            for (int i = 0; i < exp_postfix.Length; i++)
+            {
                 char caracter = exp_postfix[i];
-                bool esNum = int.TryParse(caracter +"", out int numero);
+                bool esNum = int.TryParse(caracter + "", out int numero);
                 if (esNum)
                     pila.Push(numero);
-                else {
+                else
+                {
                     int b = pila.Pop();
                     int a = pila.Pop();
                     switch (caracter)
                     {
                         case '+':
-                            pila.Push(a+b);
+                            pila.Push(a + b);
                             break;
                         case '-':
                             pila.Push(a - b);
@@ -139,36 +142,55 @@ namespace _20240815
                             lblMensaje.Text = "ERROR AL RESOLVER LA EXPRESIÓN POSTFIX";
                             break;
                     }
-                }  
+                }
             }
-            return pila.Pop()+"";
+            return pila.Pop() + "";
         }
 
-        private int resolverRecursivo(int n) {// factorial - 5! = 5*4*3*2*1 = 120 -> n! = n*(n-1)*(n-2)*...*1 
+        public void recibeArchivo(string rutaArchivo)
+        {
+            StreamReader archivo = new StreamReader(rutaArchivo);
+            //string? comando = archivo.ReadLine();
+            string? linea = "";
+            while (!archivo.EndOfStream)
+            {
+                linea += archivo.ReadLine() + "\n";// \t
+            }
+            archivo.Close();
+            lblContenidoArchivo.Text = linea;
+            txtContenido.Text = linea;
+        }
+
+        private int resolverRecursivo(int n)
+        {// factorial - 5! = 5*4*3*2*1 = 120 -> n! = n*(n-1)*(n-2)*...*1 
             if (n == 1 || n == 0)
                 return 1;
-            return n * resolverRecursivo(n-1); // 5 * 4 * 3 * 2 * 1
+            return n * resolverRecursivo(n - 1); // 5 * 4 * 3 * 2 * 1
         }
         private string convertirApostfix(string exp_infix)
         {
             string exp_postfix = "";
             // Resolvemos el problema
             Stack<char> pila_auxiliar = new Stack<char>();
-            for (int i = 0; i < exp_infix.Length; i++) {
+            for (int i = 0; i < exp_infix.Length; i++)
+            {
                 char simbolo = exp_infix[i];
-                switch (simbolo) {
+                switch (simbolo)
+                {
                     case '(':
                         pila_auxiliar.Push(simbolo);
                         break;
                     case ')':
                         char elemento_de_pila;
-                        do {
+                        do
+                        {
                             elemento_de_pila = pila_auxiliar.Pop();
                             if (!elemento_de_pila.Equals('('))
                                 exp_postfix += elemento_de_pila;
                         } while (!elemento_de_pila.Equals('(') && pila_auxiliar.Count > 0);
                         break;
-                    case '+': case '-':
+                    case '+':
+                    case '-':
                         if (pila_auxiliar.Count == 0)
                         {
                             pila_auxiliar.Push(simbolo);
@@ -193,18 +215,21 @@ namespace _20240815
                                 //pila_auxiliar.Push('(');
                                 pila_auxiliar.Push(simbolo);
                             }
-                                
+
                         }
                         break;
-                    case '*': case '/':
-                        if (pila_auxiliar.Count == 0) {
+                    case '*':
+                    case '/':
+                        if (pila_auxiliar.Count == 0)
+                        {
                             pila_auxiliar.Push(simbolo);
                         }
                         else
                         {
                             elemento_de_pila = pila_auxiliar.Pop();
                             bool hay_operador = "*/".Contains(elemento_de_pila);
-                            while (hay_operador) {
+                            while (hay_operador)
+                            {
                                 exp_postfix += elemento_de_pila;
                                 elemento_de_pila = pila_auxiliar.Pop();
                                 hay_operador = "*/".Contains(elemento_de_pila);
@@ -221,6 +246,63 @@ namespace _20240815
             while (pila_auxiliar.Count > 0)
                 exp_postfix += pila_auxiliar.Pop();
             return exp_postfix;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            recibeArchivo("C:\\Users\\Docker\\Downloads\\prueba.txt");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DialogResult re = dialogoAbreArchivo.ShowDialog();
+            string origen = "";
+            if (re == DialogResult.OK)
+            {
+                origen = dialogoAbreArchivo.FileName;
+                lblOrigen.Text = origen;
+                recibeArchivo(origen);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string contenido = txtContenido.Text;
+            string destino = "C:\\Users\\Docker\\Desktop\\guardado.txt";
+            if (File.Exists(destino))
+                File.Delete(destino);
+            FileInfo dest = new FileInfo(destino);
+            using (FileStream fs = dest.Open(FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(contenido);// *
+                }
+            }
+            lblMensaje.Text = "Escrito exitosamente.";
+        }
+
+        private void sobrePath()
+        {
+            string path = @"C:\Users\Docker\Downloads\prueba.txt";
+            string nombre_archivo = Path.GetFileName(path);
+            lblMensaje.Text = $"PATH: {path}\nNOMBRE ARCH: {nombre_archivo}";
+
+            nombre_archivo = Path.GetFileNameWithoutExtension(path);
+            lblMensaje.Text = $"PATH: {path}\nNOMBRE ARCH: {nombre_archivo}";
+
+            nombre_archivo = Path.GetExtension(path);
+            lblMensaje.Text = $"PATH: {path}\nEXTENSIÓN: {nombre_archivo}";
+
+            nombre_archivo = Path.GetPathRoot(path);
+            lblMensaje.Text = $"PATH: {path}\nRAÍZ: {nombre_archivo}";
+            nombre_archivo = Path.GetDirectoryName(path);
+            lblMensaje.Text = $"PATH: {path}\nDIRECTORIO: {nombre_archivo}";
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            sobrePath();
         }
     }
 }

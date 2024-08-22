@@ -41,6 +41,7 @@
             txtResultado = new TextBox();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            button10 = new Button();
             button9 = new Button();
             txtContenido = new TextBox();
             lblOrigen = new Label();
@@ -49,10 +50,13 @@
             lblContenidoArchivo = new Label();
             tbAcerca = new TabPage();
             dialogoAbreArchivo = new OpenFileDialog();
-            button10 = new Button();
+            tabPage3 = new TabPage();
+            button11 = new Button();
+            lblConexion = new Label();
             tabControl1.SuspendLayout();
             tbCalculadora.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // btnSaludar
@@ -78,6 +82,7 @@
             tabControl1.Controls.Add(tbCalculadora);
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tbAcerca);
             tabControl1.Location = new Point(2, 93);
             tabControl1.Name = "tabControl1";
@@ -194,6 +199,16 @@
             tabPage2.Text = "Archivos";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button10
+            // 
+            button10.Location = new Point(39, 312);
+            button10.Name = "button10";
+            button10.Size = new Size(240, 23);
+            button10.TabIndex = 6;
+            button10.Text = "Ejemplos de Path";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
+            // 
             // button9
             // 
             button9.Location = new Point(204, 280);
@@ -263,15 +278,35 @@
             // 
             dialogoAbreArchivo.FileName = "openFileDialog1";
             // 
-            // button10
+            // tabPage3
             // 
-            button10.Location = new Point(39, 312);
-            button10.Name = "button10";
-            button10.Size = new Size(240, 23);
-            button10.TabIndex = 6;
-            button10.Text = "Ejemplos de Path";
-            button10.UseVisualStyleBackColor = true;
-            button10.Click += button10_Click;
+            tabPage3.Controls.Add(lblConexion);
+            tabPage3.Controls.Add(button11);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(345, 400);
+            tabPage3.TabIndex = 4;
+            tabPage3.Text = "Bases de datos";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(5, 10);
+            button11.Name = "button11";
+            button11.Size = new Size(75, 23);
+            button11.TabIndex = 0;
+            button11.Text = "Conectarse";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
+            // 
+            // lblConexion
+            // 
+            lblConexion.AutoSize = true;
+            lblConexion.Location = new Point(99, 14);
+            lblConexion.Name = "lblConexion";
+            lblConexion.Size = new Size(78, 15);
+            lblConexion.TabIndex = 1;
+            lblConexion.Text = "Sin conexión.";
             // 
             // Form1
             // 
@@ -288,6 +323,8 @@
             tbCalculadora.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -316,5 +353,8 @@
         private TextBox txtContenido;
         private Button button9;
         private Button button10;
+        private TabPage tabPage3;
+        private Label lblConexion;
+        private Button button11;
     }
 }

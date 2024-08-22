@@ -1,3 +1,5 @@
+using Microsoft.Data.SqlClient;
+
 namespace _20240815
 {
     public partial class Form1 : Form
@@ -303,6 +305,16 @@ namespace _20240815
         private void button10_Click(object sender, EventArgs e)
         {
             sobrePath();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            // Cadena de conexión
+            string cadenaConexion = @"Server=192.168.1.254;DataBase=Empresa;User=sa;password=123456ABCxyz;TrustServerCertificate=True;Encrypt=False";
+            using (var con = new SqlConnection(cadenaConexion)) {
+                con.Open();
+                lblConexion.Text = "Conexión exitosa!!";
+            }
         }
     }
 }

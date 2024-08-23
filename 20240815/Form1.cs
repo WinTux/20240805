@@ -311,9 +311,87 @@ namespace _20240815
         {
             // Cadena de conexión
             string cadenaConexion = @"Server=192.168.1.254;DataBase=Empresa;User=sa;password=123456ABCxyz;TrustServerCertificate=True;Encrypt=False";
-            using (var con = new SqlConnection(cadenaConexion)) {
+            using (var con = new SqlConnection(cadenaConexion))
+            {
                 con.Open();
                 lblConexion.Text = "Conexión exitosa!!";
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string cadenaConexion = @"Server=192.168.1.254;DataBase=Empresa;User=sa;password=123456ABCxyz;TrustServerCertificate=True;Encrypt=False";
+            using (var con = new SqlConnection(cadenaConexion))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = con;
+                cmd.CommandText = "CREATE TABLE prueba (valor1 INT, cadena VARCHAR(20), numero INT);";
+                cmd.ExecuteNonQuery();
+                lblConexion.Text = "Tabla creada.";
+                cmd.Dispose();
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string cadenaConexion = @"Server=192.168.1.254;DataBase=Empresa;User=sa;password=123456ABCxyz;TrustServerCertificate=True;Encrypt=False";
+            using (var con = new SqlConnection(cadenaConexion))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = con;
+                bool esNum = int.TryParse(txtValor1.Text, out int valor1);
+                bool esNum2 = int.TryParse(txtNumero.Text, out int valor2);
+                if (esNum && esNum2)
+                {
+                    cmd.CommandText = $"INSERT INTO prueba VALUES ({valor1}, '{txtCadena.Text}', {valor2});";
+                    cmd.ExecuteNonQuery();
+                    lblConexion.Text = "Registro creado";
+                }
+                else
+                {
+                    lblConexion.Text = "Existe un error en los datos";
+                }
+
+                cmd.Dispose();
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            string cadenaConexion = @"Server=192.168.1.254;DataBase=Empresa;User=sa;password=123456ABCxyz;TrustServerCertificate=True;Encrypt=False";
+            using (var con = new SqlConnection(cadenaConexion))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = con;
+                cmd.CommandText = "delete from dbo.prueba where numero > 760;";
+                cmd.ExecuteNonQuery();
+                lblConexion.Text = "Registro(s) eliminado(s)";
+                cmd.Dispose();
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string cadenaConexion = @"Server=192.168.1.254;DataBase=Empresa;User=sa;password=123456ABCxyz;TrustServerCertificate=True;Encrypt=False";
+            using (var con = new SqlConnection(cadenaConexion))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT * FROM dbo.prueba;";
+                var reader = cmd.ExecuteReader();
+                lblRegistros.Text = "";
+                while (reader.Read()) {
+                    lblRegistros.Text += $"V1: {reader.GetInt32(0)}, Cad: {reader.GetString(1)}, Num: {reader.GetInt32(2)}\n";
+                }
+                cmd.Dispose();
             }
         }
     }

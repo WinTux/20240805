@@ -48,15 +48,34 @@
             button8 = new Button();
             button7 = new Button();
             lblContenidoArchivo = new Label();
+            tabPage3 = new TabPage();
+            groupBox3 = new GroupBox();
+            button14 = new Button();
+            groupBox2 = new GroupBox();
+            button13 = new Button();
+            txtNumero = new TextBox();
+            txtCadena = new TextBox();
+            txtValor1 = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            groupBox1 = new GroupBox();
+            button12 = new Button();
+            lblConexion = new Label();
+            button11 = new Button();
             tbAcerca = new TabPage();
             dialogoAbreArchivo = new OpenFileDialog();
-            tabPage3 = new TabPage();
-            button11 = new Button();
-            lblConexion = new Label();
+            groupBox4 = new GroupBox();
+            button15 = new Button();
+            lblRegistros = new Label();
             tabControl1.SuspendLayout();
             tbCalculadora.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // btnSaludar
@@ -264,6 +283,154 @@
             lblContenidoArchivo.TabIndex = 0;
             lblContenidoArchivo.Text = "Texto:";
             // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(groupBox4);
+            tabPage3.Controls.Add(groupBox3);
+            tabPage3.Controls.Add(groupBox2);
+            tabPage3.Controls.Add(groupBox1);
+            tabPage3.Controls.Add(lblConexion);
+            tabPage3.Controls.Add(button11);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(345, 400);
+            tabPage3.TabIndex = 4;
+            tabPage3.Text = "Bases de datos";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(button14);
+            groupBox3.Location = new Point(19, 256);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(316, 38);
+            groupBox3.TabIndex = 4;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Eliminación";
+            // 
+            // button14
+            // 
+            button14.Location = new Point(83, 9);
+            button14.Name = "button14";
+            button14.Size = new Size(75, 23);
+            button14.TabIndex = 0;
+            button14.Text = "Eliminar";
+            button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(button13);
+            groupBox2.Controls.Add(txtNumero);
+            groupBox2.Controls.Add(txtCadena);
+            groupBox2.Controls.Add(txtValor1);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(label1);
+            groupBox2.Location = new Point(16, 124);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(319, 126);
+            groupBox2.TabIndex = 3;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Inserción";
+            // 
+            // button13
+            // 
+            button13.Location = new Point(191, 74);
+            button13.Name = "button13";
+            button13.Size = new Size(75, 23);
+            button13.TabIndex = 2;
+            button13.Text = "Insertar";
+            button13.UseVisualStyleBackColor = true;
+            button13.Click += button13_Click;
+            // 
+            // txtNumero
+            // 
+            txtNumero.Location = new Point(70, 75);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(100, 23);
+            txtNumero.TabIndex = 1;
+            // 
+            // txtCadena
+            // 
+            txtCadena.Location = new Point(70, 48);
+            txtCadena.Name = "txtCadena";
+            txtCadena.Size = new Size(100, 23);
+            txtCadena.TabIndex = 1;
+            // 
+            // txtValor1
+            // 
+            txtValor1.Location = new Point(70, 21);
+            txtValor1.Name = "txtValor1";
+            txtValor1.Size = new Size(100, 23);
+            txtValor1.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(10, 78);
+            label3.Name = "label3";
+            label3.Size = new Size(54, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Numero:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 51);
+            label2.Name = "label2";
+            label2.Size = new Size(50, 15);
+            label2.TabIndex = 0;
+            label2.Text = "Cadena:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(10, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Valor 1:";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(button12);
+            groupBox1.Location = new Point(12, 50);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(323, 67);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Crear tabla";
+            // 
+            // button12
+            // 
+            button12.Location = new Point(10, 27);
+            button12.Name = "button12";
+            button12.Size = new Size(75, 23);
+            button12.TabIndex = 0;
+            button12.Text = "Crear";
+            button12.UseVisualStyleBackColor = true;
+            button12.Click += button12_Click;
+            // 
+            // lblConexion
+            // 
+            lblConexion.AutoSize = true;
+            lblConexion.Location = new Point(99, 14);
+            lblConexion.Name = "lblConexion";
+            lblConexion.Size = new Size(78, 15);
+            lblConexion.TabIndex = 1;
+            lblConexion.Text = "Sin conexión.";
+            // 
+            // button11
+            // 
+            button11.Location = new Point(5, 10);
+            button11.Name = "button11";
+            button11.Size = new Size(75, 23);
+            button11.TabIndex = 0;
+            button11.Text = "Conectarse";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
+            // 
             // tbAcerca
             // 
             tbAcerca.Location = new Point(4, 24);
@@ -278,35 +445,35 @@
             // 
             dialogoAbreArchivo.FileName = "openFileDialog1";
             // 
-            // tabPage3
+            // groupBox4
             // 
-            tabPage3.Controls.Add(lblConexion);
-            tabPage3.Controls.Add(button11);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(345, 400);
-            tabPage3.TabIndex = 4;
-            tabPage3.Text = "Bases de datos";
-            tabPage3.UseVisualStyleBackColor = true;
+            groupBox4.Controls.Add(lblRegistros);
+            groupBox4.Controls.Add(button15);
+            groupBox4.Location = new Point(9, 299);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(326, 98);
+            groupBox4.TabIndex = 5;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Read";
             // 
-            // button11
+            // button15
             // 
-            button11.Location = new Point(5, 10);
-            button11.Name = "button11";
-            button11.Size = new Size(75, 23);
-            button11.TabIndex = 0;
-            button11.Text = "Conectarse";
-            button11.UseVisualStyleBackColor = true;
-            button11.Click += button11_Click;
+            button15.Location = new Point(90, 10);
+            button15.Name = "button15";
+            button15.Size = new Size(127, 23);
+            button15.TabIndex = 0;
+            button15.Text = "Obtener registros";
+            button15.UseVisualStyleBackColor = true;
+            button15.Click += button15_Click;
             // 
-            // lblConexion
+            // lblRegistros
             // 
-            lblConexion.AutoSize = true;
-            lblConexion.Location = new Point(99, 14);
-            lblConexion.Name = "lblConexion";
-            lblConexion.Size = new Size(78, 15);
-            lblConexion.TabIndex = 1;
-            lblConexion.Text = "Sin conexión.";
+            lblRegistros.AutoSize = true;
+            lblRegistros.Location = new Point(12, 45);
+            lblRegistros.Name = "lblRegistros";
+            lblRegistros.Size = new Size(74, 15);
+            lblRegistros.TabIndex = 1;
+            lblRegistros.Text = "Sin registros.";
             // 
             // Form1
             // 
@@ -325,6 +492,12 @@
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -356,5 +529,20 @@
         private TabPage tabPage3;
         private Label lblConexion;
         private Button button11;
+        private GroupBox groupBox1;
+        private Button button12;
+        private GroupBox groupBox2;
+        private Button button13;
+        private TextBox txtNumero;
+        private TextBox txtCadena;
+        private TextBox txtValor1;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private GroupBox groupBox3;
+        private Button button14;
+        private GroupBox groupBox4;
+        private Label lblRegistros;
+        private Button button15;
     }
 }
